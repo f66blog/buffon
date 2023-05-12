@@ -129,11 +129,11 @@ plot: block
         call fig1%init(3 * k, k)
         ! draw lines
         call fig1%line0(0, k/4, k + k-1, k/4)
-        call fig1%line0(0, 3*k/4, k + k-1, 3*k/4)
+        call fig1%line0(0, 2*k/4, k + k-1, 2*k/4)
         
         do i = 1, n 
             ix0 = k/4 + int(1.5 * k * x(i))
-            iy0 = int(k/2 * (h(i) + 0.5))
+            iy0 = int(k/4 * h(i)) + k/4
             ix1 = ix0 + k/4 * cos(2 * pi * theta(i))
             iy1 = iy0 + k/4 * sin(2 * pi * theta(i))
             call fig1%line0(ix0, iy0, ix1, iy1)
