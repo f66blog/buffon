@@ -106,20 +106,23 @@ contains
   end subroutine line
 
 end module uniplot
+
 program uniplot_main
-    use :: uniplot
     implicit none
     real, parameter :: pi = 4 * atan(1.0)
     real, allocatable :: x(:), h(:), theta(:)
     integer :: n
-    n = 100
-    allocate(x(n), h(n), theta(n))
-    call random_seed()
-    call random_number(x)
-    call random_number(h)
-    call random_number(theta)
+data_initialize: block
+        n = 100
+        allocate(x(n), h(n), theta(n))
+        call random_seed()
+        call random_number(x)
+        call random_number(h)
+        call random_number(theta)
+      end block data_initialize
 
 plot: block 
+        use :: uniplot
         type(fig_t) :: fig1
         integer :: i, ix0, iy0, ix1, iy1, k
         k = 100
